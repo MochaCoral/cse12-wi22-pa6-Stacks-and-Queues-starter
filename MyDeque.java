@@ -46,7 +46,7 @@ public class MyDeque<E> implements DequeInterface<E>{
                 }
             }
             else { //contiguous deque
-                for(int i = front; i < rear; i++) {
+                for(int i = front; idx < this.size(); i++) {
                     expandedData[idx] = data[i];
                     idx++;
                 }
@@ -68,10 +68,10 @@ public class MyDeque<E> implements DequeInterface<E>{
         if(this.size() == this.data.length) {
             this.expandCapacity();
         }        
-        if(this.front == 0) {
+        if(this.front == 0 && this.size != 0) {
             this.front = this.data.length - 1;
         }
-        else {
+        else if(this.front != 0){
             this.front--;
         }
         data[this.front] = element;
@@ -90,10 +90,12 @@ public class MyDeque<E> implements DequeInterface<E>{
         if(this.size() == this.data.length) {
             this.expandCapacity();
         }
-        if(this.rear == this.data.length - 1) {
+        if(this.rear == this.data.length - 1
+            && this.size != 0) 
+        {
             this.rear = 0;
         }
-        else {
+        else if(this.rear != this.data.length - 1) {
             this.rear++;
         }
         data[this.rear] = element;
@@ -114,7 +116,9 @@ public class MyDeque<E> implements DequeInterface<E>{
         else {
             culled = (E) data[this.front];
             data[this.front] = null;
-            this.front++;
+            if(size > 1) {
+                this.front++;
+            }
             this.size--;
         }
         return culled;
@@ -133,7 +137,9 @@ public class MyDeque<E> implements DequeInterface<E>{
         else {
             culled = (E) data[this.rear];
             data[this.rear] = null;
-            this.rear--;
+            if(size > 1) {
+                this.rear--;
+            }
             this.size--;
         }
         return culled;

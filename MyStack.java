@@ -47,7 +47,7 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public void push(E element) {
-        this.theStack.addLast(element);
+        this.theStack.addFirst(element);
     }
 
     /**
@@ -58,7 +58,7 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public E pop() {
-        return this.theStack.removeLast();
+        return this.theStack.removeFirst();
     }
 
     /**
@@ -69,7 +69,7 @@ public class MyStack<E> implements StackInterface<E> {
      */
     @Override
     public E peek() {
-        return this.theStack.peekLast();
+        return this.theStack.peekFirst();
     }
 
     /**

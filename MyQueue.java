@@ -47,7 +47,7 @@ public class MyQueue<E> implements QueueInterface<E> {
      */
     @Override
     public void enqueue(E element) {
-        this.theQueue.addLast(element);
+        this.theQueue.addFirst(element);
     }
 
     /**
@@ -59,7 +59,7 @@ public class MyQueue<E> implements QueueInterface<E> {
      */
     @Override
     public E dequeue() {
-        return this.theQueue.removeFirst();
+        return this.theQueue.removeLast();
     }
 
     /**
@@ -70,7 +70,7 @@ public class MyQueue<E> implements QueueInterface<E> {
      */
     @Override
     public E peek() {
-        return this.theQueue.peekFirst();
+        return this.theQueue.peekLast();
     }
 
     /**
